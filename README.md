@@ -1,5 +1,5 @@
 
-# Web App [Health Care]
+# Health Care [Web App]
 
 Dự án web app tư vấn và chăm sóc sức khỏe online 
 
@@ -7,7 +7,7 @@ Dự án web app tư vấn và chăm sóc sức khỏe online
 ![Logo](https://health-care-nhom-6-reactjs-9016b2b9348b.herokuapp.com/static/media/logo.7ee83d6d.svg)
 
 
-## Demo
+## Website
 
 https://health-care-nhom-6-reactjs-9016b2b9348b.herokuapp.com/home
 
