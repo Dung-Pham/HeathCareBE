@@ -501,8 +501,57 @@ let sendRemedy = (data) => {
     })
 }
 
+let getNumPatient = (doctorId, date, timeType) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!doctorId || !date || !timeType) {
+                console.log("check doctorId: ", doctorId)
+                console.log("check date: ", date)
+                console.log("check timeType: ", timeType)
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing input parameter!'
+                })
+            } else {
+                let data = await db.Booking.findAll({
+                    where: {
+                        statusId: 'S2',
+                        doctorId,
+                        date,
+                        timeType
+                    },
+                    include: [
+                        {
+                            model: db.User, as: 'patientData',
+                            attributes: ['email', 'firstName', 'address', 'gender'],
+                            include: [
+                                {
+                                    model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi']
+                                }
+                            ]
+                        },
+                        {
+                            model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
+                        }
+                    ],
+                    raw: false,
+                    nest: true
+                })
+
+                resolve({
+                    errCode: 0,
+                    data
+                })
+            }
+        } catch (e) {
+            console.log(e)
+            reject(e)
+        }
+    })
+}
+
 module.exports = {
     getTopDoctorHome, getAllDoctor, postInfoDoctor, getDetailDoctorById,
     bulkCreateSchedule, getScheduleDoctorByDate, getExtraInfoDoctorById,
-    getProfileDoctorById, getListPatientForDoctor, sendRemedy
+    getProfileDoctorById, getListPatientForDoctor, sendRemedy, getNumPatient
 }
