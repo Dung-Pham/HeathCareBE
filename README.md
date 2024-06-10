@@ -9,8 +9,7 @@ Dự án web app tư vấn và chăm sóc sức khỏe online
 
 ## Website
 
-https://health-care-nhom-6-reactjs-9016b2b9348b.herokuapp.com/home
-
+https://healthcare-fe-843614dc585c.herokuapp.com
 
 ## Tech Stack
 
